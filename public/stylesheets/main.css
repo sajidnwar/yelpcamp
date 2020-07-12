@@ -1,0 +1,49 @@
+.rwd-form {
+    margin: 25px auto;
+    width: 90%;
+   }
+   
+   @media (min-width: 600px) {
+     .rwd-form {
+       width: 50%;
+     }
+   }
+   
+   @media (min-width: 900px) {
+     .rwd-form {
+       width: 40%;
+     }
+   }
+   
+   @media (min-width: 1200px) {
+     .rwd-form {
+       width: 30%;
+     }
+   }
+   
+   /* delete button */
+   .delete-form {
+     display: inline;
+   }
+   
+   /* Google Maps */
+   #map {
+       height: 400px;
+       width: 100%;
+   }
+   
+.thumbnail img{
+    width:80%;
+}
+.thumbnail{
+    padding: 0;
+}
+.thumbnail .caption-full{
+    padding: 9px;
+}
+#delete-form{
+    display: inline;
+}
+#yelpcamp{
+    background-color: lightslategrey;
+}
