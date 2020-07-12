@@ -75,4 +75,4 @@ server.use("/",indexRoutes)
 server.use("/camp",campgroundRoutes)
 server.use("/camp/:id/comments",commentRoutes)
 
-server.listen(3333,()=>{console.log("server has started at http://localhost:3334 ")})
+server.listen(3333,()=>{console.log("server has started at http://localhost:3333 ")})
