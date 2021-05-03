@@ -22,15 +22,15 @@ router.post('/',middleware.isLoggedIn,(req,res)=>{
         }else{
             Comment.create(req.body.comment,function(err,comment){
                 if(err){
-                    console.log(err)
+                    req.flash("error","Something went wrong");
                 }else{
                     comment.author.id=req.user.id;
                     comment.author.username=req.user.username;
                     comment.save();
                     campground.comments.push(comment);
                     campground.save();
-                    req.flash('success', 'Created a comment!');
-                    res.redirect('/camp/'+campground.id)
+                    req.flash('success', 'Comment Added!');
+                    res.redirect('/camp/'+campground._id)
                 }
             })
         }
@@ -63,7 +63,7 @@ router.delete("/:comment_id",middleware.checkUserComment,function(req,res){
         if(err){
             res.redirect("back")
         }else{
-            //res.redirect("/camp/"+req.params.id)
+            res.flash("success","Comment deleted!");
             res.redirect("/camp/"+req.params.id)
         }
     })

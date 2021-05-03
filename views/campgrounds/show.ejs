@@ -14,15 +14,15 @@
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= camp.image%>">
                 <div class="caption-full">
-                    <span class="pull-right">$<%= camp.price %>/day</span>
-                    <h4 class="text-left" style="color: black"><a href=""><%= camp.name %></a></h4>
+                    <h4 class="pull-right">$<%= camp.price %>/day</h4>
+                    <h4><a href=""><%= camp.name %></a></h4>
                     <p><%= camp.description %></p>
                     <p>
                         <em>Submitted by:<%= camp.author.username%></em>
                     </p>
-                    <% if(currentUser && camp.author.id.equals(currentUser.id)){%>
-                    <a class="btn btn-xs btn-warning" href="/camp/<%= camp.id %>/edit">Edit</a>
-                    <form id="delete-form" action="/camp/<%= camp.id %>?_method=DELETE" method="POST">
+                    <% if(currentUser && camp.author.id.equals(currentUser._id)){%>
+                    <a class="btn btn-xs btn-warning" href="/camp/<%= camp._id %>/edit">Edit</a>
+                    <form id="delete-form" action="/camp/<%= camp._id %>?_method=DELETE" method="POST">
                         <button class="btn btn-xs btn-danger">Delete</button>
                     </form>
                     <% }%>
@@ -30,7 +30,7 @@
             </div>
             <div class="well">
                 <div class="text-right">
-                    <a class="btn btn-success" href="/camp/<%= camp.id %>/comments/new">Add Comment</a>
+                    <a class="btn btn-success" href="/camp/<%= camp._id %>/comments/new">Add Comment</a>
                 </div>
                 <hr>
                 <% camp.comments.forEach(function(comment){ %>
@@ -41,9 +41,9 @@
                             <p>
                                     <%= comment.text %>
                             </p>
-                            <% if(currentUser && comment.author.id.equals(currentUser.id)){%>
-                            <a class="btn btn-xs btn-warning" href="/camp/<%= camp.id %>/comments/<%= comment.id %>/edit">Edit</a>
-                            <form id="delete-form" action="/camp/<%= camp.id %>/comments/<%= comment.id %>?_method=DELETE" method="POST">
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                            <a class="btn btn-xs btn-warning" href="/camp/<%= camp._id %>/comments/<%= comment._id %>/edit">Edit</a>
+                            <form id="delete-form" action="/camp/<%= camp._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                                     <input type="submit" class="btn btn-xs btn-danger" value="Delete">
                             </form>
                             <% }%>

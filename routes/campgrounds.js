@@ -56,25 +56,14 @@ router.get('/:id/edit',middleware.checkUserCampground,(req,res)=>{
     
 })
 router.put("/:id",middleware.checkUserCampground,function(req,res){
-    Campground.findOneAndUpdate(req.params.id,req.body.camp,function(err,updatedCampground){
+    Campground.findByIdAndUpdate(req.params.id,req.body.camp,function(err,updatedCampground){
         if(err){
             res.redirect("/camp")
         }else{
             res.redirect("/camp/" + req.params.id);
-           // res.redirect("/camp")
-           //res.status(201).send("/camp/"+req.params.id)
         }
     })
-    // var newData = {name: req.body.name, image: req.body.image, description: req.body.desc};
-    // Campground.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, campground){
-    //     if(err){
-    //         req.flash("error", err.message);
-    //         res.redirect("back");
-    //     } else {
-    //         req.flash("success","Successfully Updated!");
-    //         res.redirect("/camp/" + req.params.id);
-    //     }
-    // });
+   
 })
 router.delete("/:id",middleware.checkUserCampground,function(req,res){
     Campground.findByIdAndRemove(req.params.id,function(err){
@@ -86,36 +75,4 @@ router.delete("/:id",middleware.checkUserCampground,function(req,res){
     })
 })
 
-// function isLoggedIn(req,res,next){
-//     if(req.isAuthenticated()){
-//         return next();
-//     }
-//     req.flash("error","Please Login first")
-//     res.redirect("/login")
-// }
-// function checkCampgroundOwnership(req,res,next){
-//     if(req.isAuthenticated()){
-//         Campground.findById(req.params.id,function(err,foundCampground){
-//             if(err){
-//                 //res.redirect("/camp")
-//                 res.redirect("back");
-//             }else{
-//                 //does user own the campground
-//                 //res.send("Here is the page")
-//                 ////console.log(foundCampground)
-//                     //console.log(foundCampground.author.id)
-//                  if(foundCampground.author.id.equals(req.user.id)){
-//                     res.render("campgrounds/edit",{camp:foundCampground})
-//                      next()
-//                  }else{
-//                 //     //console.log("ypu donot  have permission to do")
-//                    res.redirect("back");
-//                  }
-//             }
-//         })
-//     }
-//     else{
-//         res.redirect("back");
-//     }
-// }
 module.exports=router

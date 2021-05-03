@@ -28,7 +28,7 @@ var seedDB=require("./seeds")
 //seedDB()
 
 server.use(require("express-session")({
-    secret:"Bilal is proficient in java",
+    secret:"Sajid is proficient in java",
     resave:false,
     saveUninitialized:false
 }))
@@ -76,3 +76,4 @@ server.use("/camp",campgroundRoutes)
 server.use("/camp/:id/comments",commentRoutes)
 
 server.listen(3333,()=>{console.log("server has started at http://localhost:3333 ")})
+//server.listen(process.env.PORT,process.env.IP,()=>{console.log("server has started at http://localhost:3333 ")})
